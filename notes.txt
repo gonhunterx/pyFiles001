@@ -1,0 +1,9 @@
+I want to create some sort of system where the shop sells an item that makes you get +1 efficency. 
+
+This means you go collect resources and then you sell them to the shop. 
+He gives you gold for the wood or fish then you collect the gold. Once you have enough gold you buy the 
+upgrade. 
+
+Then the price of the upgrade goes up. I'll probably just make that double or something. 
+The efficency will just go up 1x each purchase of the shop keepers item. 
+

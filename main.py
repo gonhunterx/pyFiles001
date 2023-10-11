@@ -7,6 +7,13 @@ import sys
 
 
 # Classes
+class ShopKeeper:
+    def __init__(self):
+        self.shop_inventory = []
+        # im not sure how this works but id assume the shop keepers gold does not matter.
+        self.gold = 100000
+
+
 class Item:
     def __init__(self, name, value):
         self.name = name
@@ -25,7 +32,6 @@ class Player:
         print("Inventory:")
         for i in self.inventory:
             print(f"{i.name}")
-        return
 
 
 # List of Items (Unsure if these are necessary)
@@ -63,6 +69,11 @@ def main_menu(player):
         arena(player)
     elif choice == "5":
         player.display_stats()
+        continue_input = input("1. to continue...: ")
+        if continue_input == "1":
+            main_menu(player)
+        else:
+            main_menu(player)
     elif choice == "6":
         sys.exit()
     else:
@@ -72,15 +83,28 @@ def main_menu(player):
 def woods(player):
     print("you enter the woods...")
     collect_resource(player, "wood log", 4)
+    main_menu(player)
 
 
 def pond(player):
+    # do i want it so you immediatly fish or chop?
     print("you walk over to the pond...")
     collect_resource(player, "fish", 5)
+    main_menu(player)
 
 
 def shop(player):
+    shop_keeper = ShopKeeper()
     print("you enter the shop...")
+    # shop menu
+    print("1. Buy")
+    print("2. Sell")
+    print
+    # logic for buying and selling items.
+    shop_choice = input("Input: ")
+    if shop_choice == "1":
+        print("What do you want to buy?")
+        print(shop_keeper.shop_inventory)
 
 
 def arena(player):
@@ -88,7 +112,7 @@ def arena(player):
 
 
 def collect_resource(player, resource_name, resource_value):
-    print(f"You found {resource_name}!")
+    print(f"You found {resource_name}! +1 {resource_name}")
     # append the item found to the player inventory
     player.inventory.append(Item(resource_name, resource_value))
     collect_more = input(f"Collect more {resource_name}? yes or no: ")
